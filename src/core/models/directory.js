@@ -16,7 +16,19 @@ class Directory {
   }
 
   move(source, destination) {
-    throw new Error("To be implemented");
+    const [srcParent, srcName] = this._getParentAndName(source);
+    const [destParent] = this._getParentAndName(destination);
+
+    if (!srcParent || !srcParent.subdirectories.has(srcName)) {
+      return `Error: Cannot move ${source} - source does not exist`;
+    }
+    if (!destParent) {
+      return `Error: Cannot move ${source} to ${destination} - destination does not exist`;
+    }
+
+    const dirToMove = srcParent.subdirectories.get(srcName);
+    srcParent.subdirectories.delete(srcName);
+    destParent.subdirectories.set(srcName, dirToMove);
   }
 
   delete(path) {
