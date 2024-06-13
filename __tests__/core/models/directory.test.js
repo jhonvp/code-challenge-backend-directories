@@ -16,6 +16,15 @@ test("Directory creation", () => {
   ).toBeDefined();
 });
 
+test("Directory deletion", () => {
+  const root = new Directory("");
+  root.create("fruits/apples");
+  root.delete("fruits/apples");
+  expect(
+    root.subdirectories.get("fruits").subdirectories.get("apples")
+  ).toBeUndefined();
+});
+
 test("List directories", () => {
   const root = new Directory("");
   root.create("fruits/apples/fuji");

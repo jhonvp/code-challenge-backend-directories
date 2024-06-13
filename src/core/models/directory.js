@@ -20,7 +20,15 @@ class Directory {
   }
 
   delete(path) {
-    throw new Error("To be implemented");
+    const [parent, name] = this._getParentAndName(path);
+    if (parent && parent.subdirectories.has(name)) {
+      parent.subdirectories.delete(name);
+    } else {
+      return `Cannot delete ${path} - ${path
+        .split("/")
+        .slice(0, -1)
+        .join("/")} does not exist`;
+    }
   }
 
   list(indent = 0) {
@@ -30,6 +38,18 @@ class Directory {
       result += subDir.list(indent + 1);
     }
     return result;
+  }
+  _getParentAndName(path) {
+    const parts = path.split("/");
+    const name = parts.pop();
+    let parent = this;
+    for (const part of parts) {
+      if (!parent.subdirectories.has(part)) {
+        return [null, null];
+      }
+      parent = parent.subdirectories.get(part);
+    }
+    return [parent, name];
   }
 }
 
