@@ -1,22 +1,22 @@
 class DirectoryService {
   constructor(directoryRepository) {
-    throw new Error("To be implemented");
+    this.directoryRepository = directoryRepository;
   }
 
   create(path) {
-    throw new Error("To be implemented");
+    this.directoryRepository.create(path);
   }
 
   move(source, destination) {
-    throw new Error("To be implemented");
+    this.directoryRepository.move(source, destination);
   }
 
   delete(path) {
-    throw new Error("To be implemented");
+    return this.directoryRepository.delete(path);
   }
 
   list() {
-    throw new Error("To be implemented");
+    return this.directoryRepository.list();
   }
 }
 
