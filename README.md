@@ -18,6 +18,15 @@ To run the project, use:
     npm start
 ```
 
+## COMMANDS
+
+```bash
+   CREATE folder
+   LIST
+   DELETE folder
+   MOVE srcFolder dstFolder
+```
+
 ## Running the tests
 
 To run the project, use:
