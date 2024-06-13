@@ -1,6 +1,7 @@
 class Directory {
   constructor(name) {
-    throw new Error("To be implemented");
+    this.name = name;
+    this.subdirectories = new Map();
   }
 
   create(path) {
