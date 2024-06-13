@@ -3,23 +3,24 @@ const Directory = require("../../core/models/directory");
 
 class InMemoryDirectoryRepository extends DirectoryRepository {
   constructor() {
-    throw new Error("To be implemented");
+    super();
+    this.root = new Directory("");
   }
 
   create(path) {
-    throw new Error("To be implemented");
+    this.root.create(path);
   }
 
   move(source, destination) {
-    throw new Error("To be implemented");
+    this.root.move(source, destination);
   }
 
   delete(path) {
-    throw new Error("To be implemented");
+    return this.root.delete(path);
   }
 
   list() {
-    throw new Error("To be implemented");
+    return this.root.list();
   }
 }
 
